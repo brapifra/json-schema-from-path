@@ -4,7 +4,7 @@ getSchemaFromPath.default = getSchemaFromPath;
 
 function getSchemaFromPath(schema, path) {
 	if(!path) return schema;
-	var segments = path.split(/[\/\.]/);
+	var segments = path.replace(/\[|\]/, '.').split(/[\/\.]/);
 	// Account for leading `/` or `.`
 	if(!segments[0]) segments = segments.slice(1);
 	return getSchema(schema, segments);
